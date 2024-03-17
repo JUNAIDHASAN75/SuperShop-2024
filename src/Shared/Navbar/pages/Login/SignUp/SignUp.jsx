@@ -1,16 +1,33 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../../../../Hook/useAuth";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
+    const {createUser, updateUserProfile} = useAuth();
     const handleSignUp = e=>{
         e.preventDefault();
         const from = e.target;
         const email = from?.email?.value;
-        const name = from?.email?.value;
+        const name = from?.name?.value;
         const photo = from?.photoURL?.value;
         const password = from?.password?.value;
-        const user = {email, password, name, photo}
-        console.log(user)
+        createUser(email, password)
+        .then(result =>{
+            const user = result?.user;
+            console.log(user)
+            updateUserProfile(name, photo)
+            .then(() =>{
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            })
+        })
+
     }
     return (
         <div>

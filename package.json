@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^10.9.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
@@ -17,6 +18,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.22.1",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.10.6",
     "swiper": "^11.0.6"
   },
   "devDependencies": {
