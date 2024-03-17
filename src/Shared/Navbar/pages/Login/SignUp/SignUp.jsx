@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 
 
-const Login = () => {
-    const handleLogin = e =>{
-        e.preventDefault()
+const SignUp = () => {
+    const handleSignUp = e=>{
+        e.preventDefault();
         const from = e.target;
         const email = from?.email?.value;
+        const name = from?.email?.value;
+        const photo = from?.photoURL?.value;
         const password = from?.password?.value;
-        const user = {email, password}
+        const user = {email, password, name, photo}
         console.log(user)
     }
     return (
@@ -15,11 +17,23 @@ const Login = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
+                        <h1 className="text-5xl font-bold">Sign Up now!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 p-3">
-                        <form onSubmit={handleLogin} className="card-body">
+                        <form onSubmit={handleSignUp} className="card-body">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">PhotoURL</span>
+                                </label>
+                                <input type="text" name="photoURL" placeholder="photoURL" className="input input-bordered" required />
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -32,15 +46,14 @@ const Login = () => {
                                 </label>
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Login" />
+                                <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
                         <div className="text-center">
-                            Are You New ? <span className="font-semibold"> <Link to="/signup">Please SignUp</Link></span>
+                            Already signIn ? <span className="font-semibold"> <Link to="/login">Please Go To Login</Link></span>
                         </div>
                     </div>
                 </div>
@@ -49,4 +62,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
