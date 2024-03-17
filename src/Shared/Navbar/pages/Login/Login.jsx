@@ -1,14 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../../../Hook/useAuth";
 
 
 const Login = () => {
+    const {LoggedIn} = useAuth();
+    const navigate = useNavigate();
     const handleLogin = e =>{
         e.preventDefault()
         const from = e.target;
         const email = from?.email?.value;
         const password = from?.password?.value;
-        const user = {email, password}
-        console.log(user)
+        LoggedIn(email, password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user)
+            navigate('/')
+        })
     }
     return (
         <div>
