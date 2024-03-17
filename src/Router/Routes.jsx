@@ -3,6 +3,8 @@ import Main from "../Layout/Main";
 import Home from "../Home/Home/Home";
 import Login from "../Shared/Navbar/pages/Login/Login";
 import SignUp from "../Shared/Navbar/pages/Login/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import Secret from "../Shared/Secret/Secret";
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +14,10 @@ export const router = createBrowserRouter([
         {
             path: '/',
             element: <Home></Home>
+        },
+        {
+          path:'secret',
+          element:<PrivateRoute> <Secret></Secret> </PrivateRoute>
         },
         {
           path:'login',

@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../../../Hook/useAuth";
 import Swal from "sweetalert2";
 
 
 const SignUp = () => {
     const {createUser, updateUserProfile} = useAuth();
+    const navigate = useNavigate()
     const handleSignUp = e=>{
         e.preventDefault();
         const from = e.target;
@@ -25,6 +26,7 @@ const SignUp = () => {
                     showConfirmButton: false,
                     timer: 1500
                   });
+                  navigate('/')
             })
         })
 

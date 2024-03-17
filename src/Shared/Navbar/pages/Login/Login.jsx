@@ -1,20 +1,22 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../../Hook/useAuth";
 
 
 const Login = () => {
     const {LoggedIn} = useAuth();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
     const navigate = useNavigate();
     const handleLogin = e =>{
         e.preventDefault()
-        const from = e.target;
-        const email = from?.email?.value;
-        const password = from?.password?.value;
+        const form = e.target;
+        const email = form?.email?.value;
+        const password = form?.password?.value;
         LoggedIn(email, password)
         .then(result =>{
             const user = result.user;
             console.log(user)
-            navigate('/')
+            navigate(from, {replace:true})
         })
     }
     return (

@@ -13,7 +13,7 @@ const Navbar = () => {
     }
     const navItems = <>
        <NavLink to="/">Home</NavLink>
-       <NavLink to="/">Item2</NavLink>
+       <NavLink to="/secret">Secret File</NavLink>
        <NavLink>Item3</NavLink>
     </>
     return (
