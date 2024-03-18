@@ -1,0 +1,131 @@
+[
+    {
+      "_id": "60a8c68a2d1bde9d683c3045",
+      "name": "Apple",
+      "price": 0.99,
+      "category": "Fruits",
+      "details": "Fresh and juicy apples",
+      "image": "https://i.ibb.co/BGgKcj2/matheus-cenali-w-Xuz-S9x-R49-M-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c6f32d1bde9d683c3046",
+      "name": "Orange Juice",
+      "price": 2.49,
+      "category": "Drinks",
+      "details": "100% pure orange juice",
+      "image": "https://i.ibb.co/hs93FX5/aneta-voborilova-g-Ek-To1-Oi78-A-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c70e2d1bde9d683c3047",
+      "name": "Carrot",
+      "price": 1.29,
+      "category": "Vegetables",
+      "details": "Fresh and crunchy carrots",
+      "image": "https://i.ibb.co/N1Lxg3p/jacqueline-brandwayn-y1-r-Ew-CZk-Pg-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c72a2d1bde9d683c3048",
+      "name": "Chicken Breast",
+      "price": 5.99,
+      "category": "Meats",
+      "details": "Boneless, skinless chicken breast",
+      "image": "https://i.ibb.co/vJvj8d7/jk-sloan-9z-La37-VNL38-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7422d1bde9d683c3049",
+      "name": "Chocolate Cake",
+      "price": 12.99,
+      "category": "Desserts",
+      "details": "Rich and indulgent chocolate cake",
+      "image": "https://i.ibb.co/JR8ZmwV/david-holifield-k-Pxsq-UGne-XQ-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7582d1bde9d683c304a",
+      "name": "Chocolate Biscuits",
+      "price": 3.49,
+      "category": "Biscuits",
+      "details": "Delicious chocolate-flavored biscuits",
+      "image": "https://i.ibb.co/Wsh5pkL/brent-ninaber-r98-Mc-HBXGN8-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c76f2d1bde9d683c304b",
+      "name": "Action Figure",
+      "price": 14.99,
+      "category": "Toys",
+      "details": "An action figure for hours of fun",
+      "image": "https://i.ibb.co/tDwsBzF/nik-F3-E5-Bkq0-JUY-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c304c",
+      "name": "Shampoo",
+      "price": 8.99,
+      "category": "Beauty Products",
+      "details": "Nourishing shampoo for shiny hair",
+      "image": "https://i.ibb.co/RvzdF7t/taylor-beach-kwu9-Ny5d-KOE-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c304d",
+      "name": "Banana",
+      "price": 0.79,
+      "category": "Fruits",
+      "details": "Fresh bananas",
+      "image": "https://i.ibb.co/S3vGSws/gabriel-mihalcea-1jy-RHJPkpz8-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c304e",
+      "name": "Apple Juice",
+      "price": 1.99,
+      "category": "Drinks",
+      "details": "Refreshing cola drink",
+      "image": "https://i.ibb.co/hs93FX5/aneta-voborilova-g-Ek-To1-Oi78-A-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c304f",
+      "name": "Lettuce",
+      "price": 1.49,
+      "category": "Vegetables",
+      "details": "Fresh and crispy lettuce",
+      "image": "https://i.ibb.co/N1Lxg3p/jacqueline-brandwayn-y1-r-Ew-CZk-Pg-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c3050",
+      "name": "Beef Steak",
+      "price": 9.99,
+      "category": "Meats",
+      "details": "Juicy beef steak",
+      "image": "https://i.ibb.co/HhJDsHr/edson-saldana-J88no2v-Cr-Ts-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c3051",
+      "name": "Cheesecake",
+      "price": 15.99,
+      "category": "Desserts",
+      "details": "Creamy and delicious cheesecake",
+      "image": "https://i.ibb.co/JR8ZmwV/david-holifield-k-Pxsq-UGne-XQ-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c3052",
+      "name": "Oreo Cookies",
+      "price": 2.99,
+      "category": "Biscuits",
+      "details": "Classic chocolate sandwich cookies",
+      "image": "https://i.ibb.co/Wsh5pkL/brent-ninaber-r98-Mc-HBXGN8-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c3053",
+      "name": "LEGO Set",
+      "price": 29.99,
+      "category": "Toys",
+      "details": "Exciting LEGO building set",
+      "image": "https://i.ibb.co/tDwsBzF/nik-F3-E5-Bkq0-JUY-unsplash.jpg"
+    },
+    {
+      "_id": "60a8c7852d1bde9d683c3054",
+      "name": "Face Cream",
+      "price": 12.99,
+      "category": "BeautyProducts",
+      "details": "Hydrating face cream",
+      "image": "https://i.ibb.co/RvzdF7t/taylor-beach-kwu9-Ny5d-KOE-unsplash.jpg"
+    }
+ 
+  ]

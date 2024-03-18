@@ -14,10 +14,10 @@ const Navbar = () => {
     const navItems = <>
        <NavLink to="/">Home</NavLink>
        <NavLink to="/secret">Secret File</NavLink>
-       <NavLink>Item3</NavLink>
+       <NavLink to="/menu">Menu</NavLink>
     </>
     return (
-        <div className="navbar bg-black bg-opacity-80 max-w-screen-xl fixed z-50">
+        <div className="navbar bg-[#141414]  max-w-screen-xl ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
