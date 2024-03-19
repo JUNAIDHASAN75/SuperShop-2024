@@ -2,8 +2,11 @@
 import {  Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo2.png'
 import useAuth from '../../Hook/useAuth';
+import useCart from '../../Hook/useCart';
 const Navbar = () => {
     const {user, LogOut} = useAuth();
+    const [cart] = useCart();
+    console.log(cart)
     const handleLogOut =()=>{
         LogOut()
         .then(()=>{
@@ -15,6 +18,7 @@ const Navbar = () => {
        <NavLink to="/">Home</NavLink>
        <NavLink to="/secret">Secret File</NavLink>
        <NavLink to="/menu">Menu</NavLink>
+       <NavLink to="/carts">carts {cart?.length}</NavLink>
     </>
     return (
         <div className="navbar bg-[#141414]  max-w-screen-xl ">
