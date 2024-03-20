@@ -1,9 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../../../Hook/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../../Hook/useAxiosSecure";
 
 
 const SignUp = () => {
+    const axiosS = useAxiosSecure();
     const {createUser, updateUserProfile} = useAuth();
     const navigate = useNavigate()
     const handleSignUp = e=>{
@@ -13,20 +15,28 @@ const SignUp = () => {
         const name = from?.name?.value;
         const photo = from?.photoURL?.value;
         const password = from?.password?.value;
+        const userCollection = {email, name, photo}
         createUser(email, password)
         .then(result =>{
             const user = result?.user;
             console.log(user)
             updateUserProfile(name, photo)
             .then(() =>{
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Your work has been saved",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  navigate('/')
+                axiosS.post('/users',userCollection)
+                .then(res=>{
+                    if(res.data.insertedId){
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Successfully Sign Up",
+                            showConfirmButton: false,
+                            timer: 1500
+                          });
+                          navigate('/')
+                    }
+                    console.log(res)
+                })
+                
             })
         })
 

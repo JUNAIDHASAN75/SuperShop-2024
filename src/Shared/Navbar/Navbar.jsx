@@ -18,7 +18,7 @@ const Navbar = () => {
        <NavLink to="/">Home</NavLink>
        <NavLink to="/secret">Secret File</NavLink>
        <NavLink to="/menu">Menu</NavLink>
-       <NavLink to="/carts">carts {cart?.length}</NavLink>
+       <NavLink to="/dashboard/mycart">carts {cart?.length}</NavLink>
     </>
     return (
         <div className="navbar bg-[#141414]  max-w-screen-xl ">
