@@ -32,7 +32,7 @@ const Menu = () => {
         <div>
             <SubHeading title={"Umart Products"} subTitle={"We collect Our  Best Product for You"}></SubHeading>
             <div>
-                <div className="flex flex-wrap justify-center gap-4 mb-12">
+                <div className="flex flex-wrap justify-center gap-6 mb-12">
                     {/* Button for each category */}
                     {categories.map(category => (
                         <button 
@@ -44,7 +44,7 @@ const Menu = () => {
                         </button>
                     ))}
                 </div>
-                <div className="md:grid md:grid-cols-3 mx-auto justify-center gap-12 px-2">
+                <div className="md:grid md:grid-cols-5 mx-auto justify-center gap-1 px-2">
                     {/* Rendering filtered menu */}
                     {filteredMenu?.map(item => (
                         <MenuCart

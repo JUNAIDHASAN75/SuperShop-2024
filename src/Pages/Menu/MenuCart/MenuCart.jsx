@@ -54,8 +54,8 @@ const MenuCart = ({ item }) => {
     }
     return (
 
-            <div className="card card-compact  bg-white shadow-2xl">
-                <img className="h-full rounded-t-2xl" src={image} alt="Shoes" />
+            <div className="card card-compact rounded-md w-full bg-white shadow-xl">
+                <img className="h-full " src={image} alt="Shoes" />
                 <div className="card-body bg-white">
                     <h2 className="card-title text-[#3fd43f]">{name}</h2>
                     <p className="text-orange-400">{price} $</p>

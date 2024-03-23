@@ -13,12 +13,12 @@ const MyCart = () => {
         // console.log(id)
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: "You want to remove it !",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Remove It!"
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosS.delete(`/carts/${item}`)
@@ -27,7 +27,7 @@ const MyCart = () => {
                             refetch();
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your Cart Item has been deleted.",
                                 icon: "success"
                             });
                         }
@@ -36,15 +36,15 @@ const MyCart = () => {
         });
     }
     return (
-        <div>
+        <div className="mb-6">
             <div className="flex justify-between my-6 ">
-                <div><h2 className="font-sans font-semibold text-3xl text-black">Total Items: {cart?.length}</h2></div>
-                <div><h2 className="font-sans font-semibold text-3xl text-black">Total Price: {totalPrice} $</h2></div>
+                <div><h2 className="font-sans font-semibold text-xl md:text-3xl text-black ">Total Items: {cart?.length}</h2></div>
+                <div><h2 className="font-sans font-semibold text-xl md:text-3xl text-black ">Total Price: {totalPrice} $</h2></div>
             </div>
             <div className="overflow-x-auto">
                 <table className="table mb-12">
                     {/* head */}
-                    <thead className="bg-orange-300 text-white">
+                    <thead className="bg-orange-400 text-white">
                         <tr>
                             <th>
                                 #
@@ -85,7 +85,7 @@ const MyCart = () => {
 
                     </tbody>
                     <tfoot>
-                        <tr className="bg-slate-500 text-white">
+                        <tr className="bg-slate-600 text-white">
                             <th></th>
                             <th></th>
                             <th>Total Price</th>
