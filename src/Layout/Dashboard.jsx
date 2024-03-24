@@ -26,12 +26,13 @@ const Dashboard = () => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu  w-80 min-h-full bg-gradient-to-t from-orange-50 to-slate-900 text-lg font-thin font-serif  text-white space-y-4 ">
+        <ul className="menu  w-80 min-h-full bg-gradient-to-t  from-orange-50 to-slate-900 text-lg font-thin font-serif  text-white space-y-4 ">
           <img className="w-3/4" src={IMG} alt="" />
           {/* Sidebar content here */}
           <li><NavLink className="" to="/dashboard/userprofile">User Profile</NavLink></li>
           <li><NavLink className="" to="/dashboard/allusers">All Users</NavLink></li>
           <li><NavLink className="" to="/dashboard/admin/menu/add">Add Menu Item</NavLink></li>
+          <li><NavLink className="" to="/dashboard/admin/menu">Menu Item</NavLink></li>
           <li><NavLink className="" to="/dashboard/mycart">My Cart <span className="text-white"> {cart?.length}+</span> </NavLink></li>
           <li><NavLink to="/payment">Payment History</NavLink></li>
             <hr  className="border border-white"/>

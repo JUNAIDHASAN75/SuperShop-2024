@@ -1,38 +1,66 @@
-import { useForm } from "react-hook-form";
-import SubHeading from "../../../CustomCompo/SubHeading";
+import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../Hook/useAxiosSecure";
-import Swal from "sweetalert2";
+import SubHeading from "../../../CustomCompo/SubHeading";
+import { useEffect, useState } from "react";
 import useMenu from "../../../Hook/useMenu";
+import Swal from "sweetalert2";
 
+const AdminMenuUpdate = () => {
+    const [data, setData] = useState({});
+    const [,,refetch] = useMenu()
 
-const AddMenuItem = () => {
-    const [,,refetch]= useMenu()
+    const {id} = useParams();
+    // console.log(id);
     const axiosS = useAxiosSecure();
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        axiosS.post('/menues',data)
+    useEffect(()=>{
+        axiosS.get(`menues/${id}`)
+    .then(res=>{
+        setData(res.data)
+        // console.log(res.data)
+    })
+    },[axiosS, id])
+    
+    const handleUpdate = (e)=>{
+        e.preventDefault();
+        const from = e.target;
+        const name = from.name.value;
+        const price = from.price.value;
+        const image = from.image.value;
+        const category = from.category.value;
+        const details = from.details.value;
+        const menuItem = {name, price, image,category,details,};
+        axiosS.put(`/menues/${data._id}`,menuItem)
         .then(res=>{
-            if(res.status === 200){
+            console.log(res.data)
+            if(res.data.modifiedCount >0){
                 Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${data?.name} is Add to Menu item`,
-                    showConfirmButton: false,
-                    timer: 1500
+                    title: `${data?.name}`,
+                    text: `${data.name} is updated successfully!`,
+                    imageUrl: `${data?.image}`,
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: "Custom image"
                   });
                   refetch();
-                  reset();
+                  
+            }else{
+                Swal.fire({
+                    title: `${data?.name}`,
+                    text: `${data.name} is not updated !`,
+                    imageUrl: `${data?.image}`,
+                    imageWidth: 400,
+                    imageHeight: 200,
+                    imageAlt: "Custom image"
+                  });
             }
-        }
-            )
+        })
         
-    };
-    console.log(errors);
+        
+    }
     return (
         <div className="my-6">
-            <SubHeading title={"Add New Product"} subTitle={"WE COLLECT OUR BEST PRODUCT FOR YOU"}></SubHeading>
-            <div>
-                <form className="bg-white md:space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            <SubHeading title={"Edit menu product"}subTitle={"we value for you"}></SubHeading>
+            <form onSubmit={handleUpdate} className="bg-white md:space-y-6">
 
                     <div className="md:flex gap-12 items-start justify-between">
                         <div className="form-control w-full">
@@ -40,7 +68,7 @@ const AddMenuItem = () => {
                                 <span className="label-text text-slate-800 font-semibold">Name</span>
                             </label>
                             <label className="input-group">
-                                <input type="text" name="name"{...register("name", { required: true })} placeholder="Name" className="input bg-white rounded-none border-slate-700 border-opacity-35 input-bordered w-full" />
+                                <input type="text" name="name"defaultValue={data.name} placeholder="Name" className="input bg-white rounded-none border-slate-700 border-opacity-35 input-bordered w-full" />
                             </label>
                             {/* <span>
                                 { errors.name && <span className="text-red-500">Name is required</span>}
@@ -50,7 +78,7 @@ const AddMenuItem = () => {
                             <label className="label">
                                 <span className="label-text text-slate-800 font-semibold">Price</span>
                             </label>
-                            <input type="number" placeholder="Price"{...register("price", { required: true })} className="input input-bordered bg-white rounded-none border-slate-700 border-opacity-35" />
+                            <input type="number" name="price" placeholder="Price"defaultValue={data.price} className="input input-bordered bg-white rounded-none border-slate-700 border-opacity-35" />
                         </div>
                     </div>
                     <div>
@@ -58,7 +86,7 @@ const AddMenuItem = () => {
                             <label className="label">
                                 <span className="label-text text-slate-800 font-semibold">PhotoURL</span>
                             </label>
-                            <input type="text" name="image" placeholder="PhotoURl" {...register("image", { required: true })} className="input input-bordered rounded-none border-slate-700 border-opacity-35 bg-white" />
+                            <input type="text" name="image" placeholder="PhotoURl" defaultValue={data.image} className="input input-bordered rounded-none border-slate-700 border-opacity-35 bg-white" />
                         </div>
                     </div>
                     <div className="md:flex gap-12 items-start justify-center">
@@ -67,7 +95,8 @@ const AddMenuItem = () => {
                                 <span className="label-text text-slate-800 font-semibold">Category</span>
                             </label>
 
-                            <select className="input input-bordered bg-white rounded-none border-slate-700 border-opacity-35" {...register("category", { required: true })}>
+                            <select name="category" value={data.category} className="input input-bordered bg-white rounded-none border-slate-700 border-opacity-35">
+                                {/* <option value={data.category}></option>  */}
                                 <option value="Fruits">Fruits</option>
                                 <option value="Vegetables">Vegetables</option>
                                 <option value="Meats">Meats</option>
@@ -83,7 +112,7 @@ const AddMenuItem = () => {
                                 <span className="label-text text-slate-800 font-semibold">Details</span>
                             </label>
 
-                            <input type="text" name="details" placeholder="details" {...register("details", { required: true })} className="input input-bordered bg-white rounded-none border-slate-700 border-opacity-35" />
+                            <input type="text" name="details" placeholder="details" defaultValue={data.details} className="input input-bordered bg-white rounded-none border-slate-700 border-opacity-35" />
                         </div>
                     </div>
                     <div className="form-control my-6">
@@ -93,9 +122,8 @@ const AddMenuItem = () => {
 
 
                 </form>
-            </div>
         </div>
     );
 };
 
-export default AddMenuItem;
+export default AdminMenuUpdate;

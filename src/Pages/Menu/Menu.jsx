@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import SubHeading from "../../CustomCompo/SubHeading";
 import useMenu from "../../Hook/useMenu";
 import MenuCart from "./MenuCart/MenuCart";
@@ -8,7 +8,9 @@ const Menu = () => {
     const [filteredMenu, setFilteredMenu] = useState(menu); // State to hold filtered menu
     const [activeCategory, setActiveCategory] = useState("All"); // State to hold active category
     const categories = ["All", "Drinks", "Fruits", "Vegetables", "Desserts", "Meats", "BeautyProducts", "Toys", "Biscuits"];
-
+    if(isLoading){
+        return <p>Loading</p>
+    }
     // Function to filter menu based on category
     const filterMenu = (category) => {
         setActiveCategory(category);
@@ -21,13 +23,11 @@ const Menu = () => {
     };
 
     // useEffect to set "All" button as active initially
-    useEffect(() => {
-        setActiveCategory("All");
-    }, []);
+    // useEffect(() => {
+    //     setActiveCategory("All");
+    // }, []);
 
-    if(isLoading){
-        return <p>Loading</p>
-    }
+    
     return (
         <div>
             <SubHeading title={"Umart Products"} subTitle={"We collect Our  Best Product for You"}></SubHeading>
@@ -44,7 +44,7 @@ const Menu = () => {
                         </button>
                     ))}
                 </div>
-                <div className="md:grid md:grid-cols-5 mx-auto justify-center gap-1 px-2">
+                <div className="md:grid md:grid-cols-5 mx-auto justify-center  gap-1 px-2">
                     {/* Rendering filtered menu */}
                     {filteredMenu?.map(item => (
                         <MenuCart

@@ -11,7 +11,7 @@ const useGetHook = (endpoints) => {
             return response.data
         }
     })
-    return [allData, refetch]
+    return [allData, refetch];
 };
 
 export default useGetHook;

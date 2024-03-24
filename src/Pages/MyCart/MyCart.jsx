@@ -2,10 +2,11 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hook/useAxiosSecure";
 import useCart from "../../Hook/useCart";
 import { ImBin } from "react-icons/im";
+import SubHeading from "../../CustomCompo/SubHeading";
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+    const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
 
     console.log(totalPrice)
     const axiosS = useAxiosSecure();
@@ -37,6 +38,7 @@ const MyCart = () => {
     }
     return (
         <div className="mb-6">
+            <SubHeading title={"selected umart products"} subTitle={"We Value for you"}></SubHeading>
             <div className="flex justify-between my-6 ">
                 <div><h2 className="font-sans font-semibold text-xl md:text-3xl text-black ">Total Items: {cart?.length}</h2></div>
                 <div><h2 className="font-sans font-semibold text-xl md:text-3xl text-black ">Total Price: {totalPrice} $</h2></div>
