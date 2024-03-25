@@ -14,6 +14,7 @@ import AddMenuItem from "../Pages/Dashboard/AddMenu/AddMenuItem";
 import AdminMenu from "../Pages/Dashboard/AdminMenu/AdminMenu";
 import AdminMenuUpdate from "../Pages/Dashboard/AdminMenu/AdminMenuUpdate";
 import { axiosS } from "../Hook/useAxiosSecure";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -48,11 +49,11 @@ export const router = createBrowserRouter([
       children:[
         {
           path:'/dashboard/mycart',
-          element:<MyCart></MyCart>
+          element:<PrivateRoute><MyCart></MyCart></PrivateRoute>
         },
         {
           path:'/dashboard/allusers',
-          element:<AllUsers></AllUsers>
+          element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
         },
         {
           path:'/dashboard/userprofile',
@@ -60,15 +61,15 @@ export const router = createBrowserRouter([
         },
         {
           path:'/dashboard/admin/menu/add',
-          element:<AddMenuItem></AddMenuItem>
+          element:<AdminRoute><AddMenuItem></AddMenuItem></AdminRoute>
         },
         {
-          path:'/dashboard/admin/menu',
-          element: <AdminMenu></AdminMenu>
+          path:'/dashboard/admin/menu/list',
+          element:<AdminRoute> <AdminMenu></AdminMenu></AdminRoute>
         },
         {
           path:'/dashboard/admin/menu/:id/update',
-          element:<AdminMenuUpdate></AdminMenuUpdate>,
+          element:<AdminRoute><AdminMenuUpdate></AdminMenuUpdate></AdminRoute>,
           loader:({params})=>fetch(`${axiosS}/menues/${params.id}`)
 
         }

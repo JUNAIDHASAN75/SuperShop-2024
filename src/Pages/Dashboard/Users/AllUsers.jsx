@@ -1,9 +1,28 @@
 import { ImBin } from "react-icons/im";
 import useGetHook from "../../../Hook/useGetHook";
+import useAxiosSecure from "../../../Hook/useAxiosSecure";
+import { FaUserCog } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
-    const [allData] = useGetHook('/users');
-    console.log(allData)
+    const [allData,refetch] = useGetHook('/users');
+    const axiosS = useAxiosSecure();
+    console.log(allData);
+    const handleMakeAdmin =(item)=>{
+        axiosS.patch(`/users/admin/${item._id}`)
+        .then(res=>{
+            if(res.data.modifiedCount > 0){
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `${item.name} is now admin `,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                refetch();
+            }
+        })
+    }
     return (
         <div>
             <div><h2 className="font-sans font-semibold text-3xl text-black my-6">Total Users: {allData?.length} Person</h2></div>
@@ -18,6 +37,7 @@ const AllUsers = () => {
                             <th>Image</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,7 +61,10 @@ const AllUsers = () => {
                                 <td>
                                     {item?.name}
                                 </td>
-                                <td>{item?.email} $</td>
+                                <td>{item?.email}</td>
+                                <td>{item.role === 'admin' ? 'Admin' :
+                                        <button  onClick={() => handleMakeAdmin(item)} className="btn bg-transparent  rounded-full border-0 hover:bg-transparent text-green-600 text-3xl tooltip" data-tip="Make Admin?"><FaUserCog></FaUserCog></button>
+                                    }</td>
                                 <th>
                                     <button className="text-3xl text-red-700"> <ImBin></ImBin> </button>
                                 </th>
@@ -56,6 +79,7 @@ const AllUsers = () => {
                             <th></th>
                             <th>Total Users</th>
                             <th>{allData.length} Person</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </tfoot>
