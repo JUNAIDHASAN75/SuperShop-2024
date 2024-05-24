@@ -60,9 +60,8 @@ const MenuCart = ({ item }) => {
                     <h2 className="card-title text-[#3fd43f]">{name}</h2>
                     <p className="text-orange-400">{price} $</p>
                     <p className="text-orange-400">{details}</p>
-                    <div className="card-actions justify-end">
-                        
-                        <button onClick={handleAddToCart} className="text-white px-3 py-3  rounded-lg hover:bg-orange-400 bg-[#3fd43f]">Add To Cart</button>
+                    <div className="card-actions justify-end">               
+                        <button onClick={handleAddToCart} className="glass text-white px-5 py-3 my-3 rounded-lg hover:bg-orange-400 bg-[#3fd43f]">Add To Cart</button>
                     </div>
                 </div>
             </div>

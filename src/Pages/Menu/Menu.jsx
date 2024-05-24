@@ -29,7 +29,7 @@ const Menu = () => {
 
     
     return (
-        <div>
+        <div className='mb-32'>
             <SubHeading title={"Umart Products"} subTitle={"We collect Our  Best Product for You"}></SubHeading>
             <div>
                 <div className="flex flex-wrap justify-center gap-6 mb-12">
