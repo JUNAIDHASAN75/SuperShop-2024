@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo2.png'
 import useAuth from '../../Hook/useAuth';
 import useCart from '../../Hook/useCart';
-import { FaUserAlt } from "react-icons/fa";
 const Navbar = () => {
     const { user, LogOut } = useAuth();
+    console.log(user)
     const [cart] = useCart();
     console.log(cart)
     const handleLogOut = () => {
@@ -17,7 +17,7 @@ const Navbar = () => {
     }
     const navItems = <>
         <Link to="/">Home</Link>
-        <Link to="/secret">Secret File</Link>
+        <Link to="/dashboard/mycart">Dashboard</Link>
         <Link to="/menu">Menu</Link>
         <Link to="/dashboard/mycart">carts {cart?.length}+</Link>
     </>
@@ -41,13 +41,11 @@ const Navbar = () => {
             </div>
             <div className="navbar-end me-12">
                 {
-                    user && user ? <div>
-                        <details className="dropdown dropdown-end">
-                            <summary className=""><FaUserAlt></FaUserAlt></summary>
-                            <ul className=" shadow menu dropdown-content z-[1] bg-orange-600  w-52">
-                                <li className=''><a>{user?.displayName}</a></li>
-                            </ul>
-                        </details>
+                    user && user ? <div className='flex items-center gap-2'>
+                        <div  className="tooltip tooltip-bottom" data-tip={user?.email}>
+                            {/* <FaUserAlt></FaUserAlt> */}
+                            <img className='w-12 h-12 rounded-full' src={user?.photoURL} alt="" />
+                        </div>
                                 <button onClick={handleLogOut}>LogOut</button>
                     </div> : <Link to="/login">Login</Link>
                 }
