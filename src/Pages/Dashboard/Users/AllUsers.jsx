@@ -22,6 +22,32 @@ const AllUsers = () => {
                 refetch();
             }
         })
+    };
+    const handleUserDelete =(id) =>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You Want To Delete this User!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosS.delete(`/users/${id}`)
+                .then(res =>{
+                    if(res.status === 200){
+                        refetch()
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "User has been deleted.",
+                            icon: "success"
+                          });
+                    }
+                })
+              
+            }
+          });
     }
     return (
         <div>
@@ -66,7 +92,7 @@ const AllUsers = () => {
                                         <button  onClick={() => handleMakeAdmin(item)} className="btn bg-transparent  rounded-full border-0 hover:bg-transparent text-green-600 text-3xl tooltip" data-tip="Make Admin?"><FaUserCog></FaUserCog></button>
                                     }</td>
                                 <th>
-                                    <button className="text-3xl text-red-700"> <ImBin></ImBin> </button>
+                                    <button onClick={()=>handleUserDelete(item?._id)} className="text-3xl text-red-700"> <ImBin></ImBin> </button>
                                 </th>
                             </tr>)
                         }
